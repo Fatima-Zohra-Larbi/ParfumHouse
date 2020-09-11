@@ -24,8 +24,8 @@
             
 
 .header {
-    position: fixed;
-    top: 0;
+
+   
     text-align: right;
 height:6%;
     width: 100%;
@@ -33,8 +33,8 @@ height:6%;
     color: #fff;
 }
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color:  rgb(247, 243, 243);
+                color: black;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -239,6 +239,8 @@ li {
 
 }
 
+/* ADVANCED SEARCH */
+
 .advanced{
     border: 1px solid #1F497D;
     border-radius: 4px;
@@ -258,13 +260,88 @@ fieldset legend
 color: black;
 }
 .advanced input{
-   border-radius: 5px;
-   border: 1px solid;
    height: 30px;
+   border: 0;
+   background-color: rgb(235, 230, 230) ;
 }
 .advanced select{
    height: 30px;
+   background-color: rgb(235, 230, 230) ;
+   border: 0;
+
+
 }
+input[type=text]:focus{
+  outline: 1px solid #467dc0;     /* oranges! yey */
+}
+select:focus{
+outline: 1px solid #467dc0;     /* oranges! yey */
+}
+/* GENDER RADIO DESIGN */
+.gender {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.gender input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: rgb(228, 224, 224) ;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.gender :hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.gender input:checked ~ .checkmark {
+  background-color: #467dc0;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.gender input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.gender .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* CSS OF ADVANCED SEARCH S BUTTON */
 .contain{
   width:250px;
   height:20px;
@@ -309,19 +386,100 @@ color: black;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
   transition: .05s
 }
+/* NAV BAR search */
+.search {
+    
+    height: 40px;
+    background-color: rgb(235, 230, 230) ;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.search-input {
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    outline: 0;
+    background:  rgb(235, 230, 230) ;
+    width: 300px;
+    margin-top: 2px;
+    caret-color: transparent;
+    line-height: 30px;
+    transition: width 0.4s linear
+}
 
 
-         
+.search .search-input {
+  background:  rgb(235, 230, 230) ;
+
+  border: 0;
+    padding: 0 10px;
+    width: 250px;
+    caret-color: transparent;
+    font-size: 16px;
+    font-weight: 100;
+    color: grey;
+    transition: width 0.4s linear
+}
+
+.search:hover>.search-icon {
+    background: #1A237E;
+    color: #fff
+}
+
+.search-icon {
+
+    height: 35px;
+    border: 0;
+    width: 35px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #467dc0;
+}
+
+a:link {
+    text-decoration: none
+}
+nav{
+  box-shadow: 0px 0px 10px #cac9e7;
+
+}
+
+li a{
+  color: black;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* CSS OF PROMOTION PHOTO  */
+.parent{
+    position: relative;
+
+}
+.image2 {
+    position: absolute;
+    left: 0%;
+    height: 70px;
+}
+.mySlide {
+   display: none;
+   border-radius: 5px;
+
+  }
+
         </style>
     </head>
     <header>
-        <div>
-            <div class="header">
+         <div >
+            <div class="header navbar-fixed-top" style="background-color: #467dc0;">
 <ul>
-<li>Join US</li>
- <li><a href="#"><img src="img/facebook.png" alt="logo" width="20" height="20" ></a></li>
- <li><a href="#"><img src="img/instagram.png" alt="logo" width="20" height="20" ></a></li>
- <li><a href="#"><img src="img/twitter.png" alt="logo" width="20" height="20" ></a></li>
+<li style="color: black; font-weight:600;">Join US</li>
+ <li><a href="#"><img src="http://www.jemome.com/cdn/2013/07/white-transparent-facebook-icon_370265.png" alt="logo" width="20" height="20" ></a></li>
+ <li><a href="#"><img src="https://tighestimepieces.com/wp-content/uploads/2016/11/Instagram-icon-WHITE.png" alt="logo" width="20" height="20" ></a></li>
+ <li><a href="#"><img src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/twitter-icon-18-256.png" alt="logo" width="20" height="20" ></a></li>
 </ul>
 <ul class ="login">
 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -329,46 +487,49 @@ color: black;
 </ul>
 
             </div>
-            <br><br>
             
-            <nav class="navbar navbar-default ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <img src="img/logo.png" alt="logo" width="150" height="50" >
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-	  <li class="active"><a href="/welcome">Home</a></li>
-
-        <li><a href="/womenParfum">Women Parfum</a></li>
-        <li >
-          <a href="/menParfum">Men Parfum</a> </li>
-        <li><a href="#">Promotions</a></li>
-        <li><a href="#">About Us</a></li>
-      </ul>
-      <form class="navbar-form navbar-right" action="" >
-      <div class="input-group" >
-        <input type="text" class="form-control" placeholder="Search" name="search">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
+            
+          
         </div>
-      </div>
-    </form>
-    </div>
-  </div>
-</nav>
-  
-        </div>
+       
+     
     </header>
+    <br><br>    <br>
+    
+
+
+    
     <body>
-	<div class="container">
+      <div>
+      <nav class="navbar navbar-custom"  >
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <img src="img/logo.png" alt="logo" width="120" height="50" >
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/welcome" >Home</a></li>
+
+            <li><a href="/womenParfum">Women Parfum</a></li>
+            <li >
+              <a href="/menParfum">Men Parfum</a> </li>
+            <li><a href="/promotion">Promotions</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" method="post" action="{{ action('parfumController@search') }}">
+            {{csrf_field()}}
+            <div class="d-flex justify-content-center h-100">
+              <div class="search"> <input type="text" class="search-input" placeholder="search..." name="search"> 
+                <button class="search-icon" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>            
+            </div>
+          </div>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+	<div class="container" >
    <div class="row">
       <div class="col-sm-4" id="search">
 
@@ -379,26 +540,37 @@ color: black;
             </legend>
             
             <form >
+              
                <div >
-               <label for="text" >Price:</label><br>
-               <input  type="text" placeholder="put the price you want" required/>
-            </div><br>
+               <label for="text" class="col-sm-4" >Price:</label>
+               <input class="col-sm-8" type="text" placeholder="put the price you want" required/>
+            </div><br><br>
             <div >
-               <label >Marque:</label><br>
-               <input  type="text" placeholder="put the Marque you want" required/></div><br>
-               <div >
-               <label >Type:</label><br>
-               <selxect name="type" >
+               <label class="col-sm-4" >Marque:</label>
+               <input class="col-sm-8" type="text" placeholder="put the Marque you want" required/></div><br><br>
+               <div > 
+               <label class="col-sm-4">Type:</label>
+
+               <select name="type" class="col-sm-8" >
                   <option value="volvo">Eau de parfum</option>
                   <option value="saab">Eau de toilette</option>
                   <option value="saab">Eau de cologne</option>
                   <option value="saab">Eau de toilette</option>
-                </select></div><br>
+                </select></div> <br><br>
+                
+                
                 <div >
-                <label>Gender:</label><br>
-               <input  type="radio" name="gender" value="male">Men &nbsp;&nbsp;&nbsp;&nbsp;
-               <input  type="radio" name="gender" value="female">Women
+                <label class="col-sm-4">Gender:</label><br><br>
+                <label  class="gender col-sm-4 offset-sm-2">Women
+                  <input type="radio" checked="checked" name="gender">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="gender col-sm-8">Men
+                  <input type="radio" name="gender">
+                  <span class="checkmark"></span>
+                </label>
             </div> 
+            <br>
             <div class="contain">
                <div class="button">
                  <div class="icon">
@@ -409,13 +581,47 @@ color: black;
    
                </form>
          </fieldset>
+         <div>
+         <br><br><br>
+
+        <fieldset class="advanced">
+          <legend>
+            TRENDING
+          </legend>
+          <div>
+         <img class="mySlide" src="https://data.whicdn.com/images/335459731/original.jpg?t=1568983669" style="width:100%" height="200px">
+         <img class="mySlide" src="https://www.hpcismart.com/images/website/CleanroomNews/DIR_9/F_82501.jpg" style="width:100%" height="200px">
+         <img class="mySlide" src="https://esoligorsk.by/images/news/soligorsk/2020/february/business/sens-parfum/parfum.jpg" style="width:100%" height="200px">
+         <img class="mySlide" src="https://fimgs.net/himg/o.83061.jpg" style="width:100%" height="200px">
+ 
+        </div> 
+        </fieldset>
+</div>
       </div>
+      
       
 		@yield('content')
 		</div>
 
 </div>
+<script>
+   var myIndex = 0;
+   carousell();
+   
+   function carousell() {
+     var i;
+     var x = document.getElementsByClassName("mySlide");
+     for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+     }
+     myIndex++;
+     if (myIndex > x.length) {myIndex = 1}    
+     x[myIndex-1].style.display = "block";  
+     setTimeout(carousell, 3000); // Change image every 3 seconds
+   }
+   </script>
     </body>
+    <br>
   
     <footer class="footer-distributed">
 

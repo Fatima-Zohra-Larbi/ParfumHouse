@@ -18,7 +18,7 @@ div#product img
 
   }
   </style>
-@extends('layout.layout')
+@extends('layouts.layout')
 @section('content')
 <div  class="col-sm-8" style="max-width:800px;">
          <div>

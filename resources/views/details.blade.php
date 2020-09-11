@@ -102,14 +102,28 @@ box-shadow: 0px 0px 10px #cac9e7;
     border-radius:50px;
     width: 36px;
 }
+
+
+/* CSS OF ADD QUANTITY INPUT */
+
 </style>
-@extends('layout.layout')
+@extends('layouts.layout')
 @section('content')
 
+
         <div   class="col-sm-8" id="example1">
-<div  class="col-sm-5"  >
+        @if($parfum->promotion!=0)
+<div  class="col-sm-5 " style="position: relative;" >
            <img  src='{{$parfum->image}}' alt="parfums" width="350" height="400">
+           <img class="image2" src="https://www.pcrepairleeds.com/wp-content/uploads/2012/02/urgent.png"  />
+
    </div>  
+   @else
+   <div  class="col-sm-5"  >
+    <img  src='{{$parfum->image}}' alt="parfums" width="350" height="400">
+    
+</div>
+@endif
    <div  class="col-sm-7"  >
     <h2><span style="color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> {{$parfum->name}}</span> from <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -136,9 +150,17 @@ box-shadow: 0px 0px 10px #cac9e7;
     @foreach($size as $s)
 
     <tr>
-        <td style="text-align: center; padding-left: 2%;"> <img  src='{{$s->image}}' alt="size" width="70px" height="50px"></td>
+      
+        <td style="text-align: center; padding-left: 2%;"><a href="{{ action('parfumController@showDetails', $s->id) }}">
+           <img  src='{{$s->image}}' alt="size" width="70px" height="50px">
+          
+          </a></td>
         <td style="text-align: center;  padding-left: 8%;padding-top: 20px;"><h4> {{$s->size}} ml</h4></td>
+        @if($s->prix2 != 0)
+        <td style="text-align: center;  padding-left: 7%;padding-top: 20px;"><h4 style="color: black;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-decoration-line: line-through;text-decoration-color: red;"> {{$s->prix}} DA</h4><h4>{{$s->prix2}} DA</h4></td>
+        @else
         <td style="text-align: center;  padding-left: 7%;padding-top: 20px;"><h4 style="color: black;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> {{$s->prix}} DA</h4></td>
+        @endif
         <td style="text-align: center;  padding-left: 7%;padding-top: 20px; padding-right: 5px;"><a class="btn icon1-btn btn-info" href="#">
             <span class="glyphicon btn1-glyphicon glyphicon-shopping-cart img-circle text-warning"></span>
             Add to cart
@@ -155,13 +177,18 @@ box-shadow: 0px 0px 10px #cac9e7;
 <hr style="width:100%;text-align:left;margin-left:0 ;border-color:rgb(221, 217, 217)">
 
 <div class="row">
+  @if($parfum->prix2 != 0)
+
     <div id="content" class="col-sm-4"> 
-
-        <div class="box" style="color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{$parfum->prix}} DA </div>
+        <div class="box" style="color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><p>{{$parfum->prix2}} DA</p>  </div>
+      </div>
+        @else
+        <div id="content" class="col-sm-4"> 
+          <div class="box" style="color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{$parfum->prix}} DA </div>
+        </div>
+        @endif
         
-
-        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn icon-btn btn-info" href="#">
+        <a class="btn icon-btn btn-info " href="#">
             <span class="glyphicon btn-glyphicon glyphicon-shopping-cart img-circle text-warning"></span>
             Add to cart
             </a>

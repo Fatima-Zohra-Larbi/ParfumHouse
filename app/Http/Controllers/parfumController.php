@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\parfm;
 
+use App\parfm;
 class parfumController extends Controller
 {
     public function acceuil() {
-        $parfum = parfm::all();
+        $parfum = parfm::paginate(9);
         return view('welcome',['parfum' => $parfum,]);
 
     }
@@ -46,6 +46,16 @@ class parfumController extends Controller
                 return redirect('welcome');
         
             }
+           
+            public function search(Request $request) {
+                $search = $request->input('search');
+                $res=  parfm::where('name', 'like', '%'.$search.'%')->get();
+
+
+                return view('search',['search' => $res,]);
+        
+            }
+
             public function getWomen() {
                 $women = parfm::where('gender', '=','femme')->get();
                 return view('womenParfum',['women' => $women,]);
@@ -54,6 +64,11 @@ class parfumController extends Controller
             public function getMen() {
                 $men = parfm::where('gender', '=','homme')->get();
                 return view('menParfum',['men' => $men,]);
+        
+            }
+            public function getPromotion() {
+                $resultat = parfm::where('promotion', '=',1)->get();
+                return view('promotion',['res' => $resultat,]);
         
             }
     //
