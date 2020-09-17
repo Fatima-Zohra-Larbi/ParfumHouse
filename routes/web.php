@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/welcome', 'parfumController@acceuil');
+Route::get('/panier', 'parfumController@Panier');
+
 Route::get('/test', 'parfumController@test');
 
 Route::get('/details/id={id}', 'parfumController@showDetails');

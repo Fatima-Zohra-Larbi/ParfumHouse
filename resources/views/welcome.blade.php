@@ -1,4 +1,10 @@
 
+<!DOCTYPE html>
+<head>
+   <link rel="stylesheet" href="sass/main.css">
+
+</head>
+
 <style>
   div h4{
      color: black;

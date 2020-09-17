@@ -12,8 +12,8 @@ class parfumController extends Controller
         return view('welcome',['parfum' => $parfum,]);
 
     }
-    public function test() {
-        return view('test');
+    public function Panier() {
+        return view('panier');
 
     }
     public function showDetails($id) {

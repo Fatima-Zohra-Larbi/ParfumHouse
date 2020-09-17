@@ -471,7 +471,7 @@ li a{
   }
 
         </style>
-    </head>
+    </head><!-- 
     <header>
          <div >
             <div class="header navbar-fixed-top" style="background-color: #467dc0;">
@@ -496,7 +496,7 @@ li a{
     </header>
     <br><br>    <br>
     
-
+ -->
 
     
     <body>
@@ -504,7 +504,7 @@ li a{
       <nav class="navbar navbar-custom"  >
         <div class="container-fluid">
           <div class="navbar-header">
-            <img src="img/logo.png" alt="logo" width="120" height="50" >
+            <img src="img/logo.png" alt="l" width="120" height="50" >
           </div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="/welcome" >Home</a></li>
