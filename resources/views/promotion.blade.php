@@ -1,18 +1,4 @@
-<style>
-div h4{
-     color: black;
-align-self: center;
-   }
-   div#product {
-    display: inline-block;
-    text-align: center;
-}
-div#product img
-{
-   border-radius: 5%;
-}
 
-</style>
 @extends('layouts.layout')
 @section('content')
 

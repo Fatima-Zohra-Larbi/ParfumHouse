@@ -31,6 +31,10 @@ li {
  float:right;
  padding:10px; 
  }
+ .login li a
+{
+ color: black;
+ }
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
  .footer-distributed{
 	background: #666;
@@ -445,4 +449,131 @@ li a{
 
   }
 
-        
+  div h4{
+    color: black;
+align-self: center;
+  }
+  div#product {
+   display: inline-block;
+   text-align: center;
+}
+div#product img
+{
+  border-radius: 5%;
+}
+
+  /***************** Css of add to cart***************/
+  .btn-glyphicon {
+    padding:8px;
+    background:#ffffff;
+    margin-right:4px;
+}
+.btn.icon-btn {
+    padding: 1px 15px 3px 2px;
+    border-radius:50px;
+}
+    #example1 {
+overflow: hidden;
+padding: 20px;
+
+box-shadow: 0px 0px 10px #cac9e7;
+}
+    #content .box
+{
+    position: relative;
+    border: 1px solid #262626;
+    min-height: 35px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #262626;
+    text-transform: uppercase;
+    font-size: 18px;
+    transition: 0.5s;
+    background-color: rgb(247, 243, 243);
+}
+#content .box:before
+{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgb(247, 243, 243);;
+    border: 1px solid #262626;
+    box-sizing: border-box;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transition: 0.5s;
+}
+#content .box:nth-child(1):before
+{
+    right: -5px;
+    transform: rotate(315deg);
+}
+
+/******************** CSS OF the slider carousel************/
+
+ 
+#wrapper{
+  width: 100%;
+  border-radius: 2px;
+}
+.carousel{
+  max-width: 500px;
+  margin: auto;
+  padding: 0 30px;
+}
+.carousel .card{
+    height: 160px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+
+.owl-dots{
+  text-align: center;
+  margin-top: 40px;
+}
+.owl-dot{
+  height: 0;
+  width: 0;
+  margin: 0 5px;
+  outline: none;
+  border-radius: 14px;
+  border: 0 solid #0072bc!important;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+.owl-dot.active,
+.owl-dot:hover{
+  background: #0072bc!important;
+}
+/********************** Css OF Parfum Sizes  ***********/
+ #bottles{
+     border: 1px solid;
+
+ }
+ /********************* CSS of Button sizes*****************/
+ .btn1-glyphicon {
+    padding:8px;
+    background:#ffffff;
+    margin-right:4px;
+}
+.btn.icon1-btn {
+    padding: 1px 15px 3px 2px;
+    border-radius:50px;
+    width: 36px;
+}
+
+
+/* CSS OF ADD QUANTITY INPUT */
+.qte{
+width: 140px;
+  }
+
+   .btn-number:focus{
+outline: none; 
+border: 0;
+border-color: brown;
+ }

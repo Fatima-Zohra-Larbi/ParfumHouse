@@ -1,23 +1,4 @@
-<style>
-  div h4{
-     color: black;
-align-self: center;
-   }
-   div#product {
-    display: inline-block;
-    text-align: center;
-}
-div#product img
-{
-   border-radius: 5%;
-}
 
-
-.mySlides {
-   display: none;
-
-  }
-  </style>
 @extends('layouts.layout')
 @section('content')
 <div  class="col-sm-8" style="max-width:800px;">
@@ -29,7 +10,9 @@ div#product img
 
          @foreach($men as $man)
          <div   id="product" >
-            <img  src='{{$man->image}}' alt="parfums" width="200" height="200">
+         <a href="{{ action('parfumController@showDetails', $man->id) }}" class="parent" > 
+
+            <img  src='{{$man->image}}' alt="parfums" width="200" height="200"></a>
          
             <h4 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> {{$man->name}}</h4>
             <h5 style="color: cornflowerblue;"> {{$man->type}}</h5>

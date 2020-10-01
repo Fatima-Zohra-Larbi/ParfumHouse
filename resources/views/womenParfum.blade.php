@@ -29,7 +29,9 @@ div#product img
 
          @foreach($women as $woman)
          <div   id="product" >
-            <img  src='{{$woman->image}}' alt="parfums" width="200" height="200">
+         <a href="{{ action('parfumController@showDetails', $woman->id) }}" class="parent" > 
+
+            <img  src='{{$woman->image}}' alt="parfums" width="200" height="200"></a>
          
             <h4 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> {{$woman->name}}</h4>
             <h5 style="color: cornflowerblue;"> {{$woman->type}}</h5>

@@ -5,22 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\parfm;
+use App\orders;
+use Auth;
 class parfumController extends Controller
 {
     public function acceuil() {
         $parfum = parfm::paginate(9);
-        return view('welcome',['parfum' => $parfum,]);
+        $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
+        return view('welcome',['parfum' => $parfum,'item'=> $items]);
 
     }
-    public function Panier() {
-        return view('panier');
 
-    }
+  
+
+   
+    
     public function showDetails($id) {
         $parfum = parfm::find($id);
-        $mark=parfm:: where('marque', '=',$parfum->marque)->where('name', '!=',$parfum->name)->take(6)->get();
+        $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
+        $mark=parfm::where('marque', '=',$parfum->marque)->where('name', '!=',$parfum->name)->distinct()->take(6)->get();
         $size=parfm:: where('name', '=',$parfum->name)->where('size', '!=',$parfum->size)->get();
-        return view('details',['parfum' => $parfum,'marque'=>$mark,'size' => $size,]);
+        return view('details',['parfum' => $parfum,'marque'=>$mark,'size' => $size,'item'=> $items]);
 
     }
     public function addData() {
@@ -49,26 +56,34 @@ class parfumController extends Controller
            
             public function search(Request $request) {
                 $search = $request->input('search');
+                $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
                 $res=  parfm::where('name', 'like', '%'.$search.'%')->get();
 
 
-                return view('search',['search' => $res,]);
+                return view('search',['search' => $res,'item'=> $items]);
         
             }
 
             public function getWomen() {
                 $women = parfm::where('gender', '=','femme')->get();
-                return view('womenParfum',['women' => $women,]);
+                $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
+                return view('womenParfum',['women' => $women,'item'=> $items]);
         
             }
             public function getMen() {
                 $men = parfm::where('gender', '=','homme')->get();
-                return view('menParfum',['men' => $men,]);
+                $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
+                return view('menParfum',['men' => $men,'item'=> $items]);
         
             }
             public function getPromotion() {
                 $resultat = parfm::where('promotion', '=',1)->get();
-                return view('promotion',['res' => $resultat,]);
+                $items = orders:: where('customer', '=',Auth::user()->email)->count();
+
+                return view('promotion',['res' => $resultat,'item'=> $items]);
         
             }
     //
