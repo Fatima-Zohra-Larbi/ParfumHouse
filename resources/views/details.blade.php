@@ -1,11 +1,7 @@
 <!DOCTYPE html>      
 
 <style>
-    #cart{
-        border: none;
-        outline: none;
-        background-color: #0072bc;
-    }
+   
     #promotion h5{
         text-decoration-line: line-through;
         text-decoration-color: black;
@@ -16,7 +12,7 @@
 
 
 <!-- The page Starting the part comes after header -->
-<form  action="/welcome" method="POST">
+<form  action='/details/id={{$parfum->id}}' method="POST">
     @csrf
 
 
@@ -38,10 +34,10 @@
         </h4>
     <div class="row">
 
-    <i class="fa fa-star" style="color:  #0072bc;"></i>
-    <i class="fa fa-star" style="color:  #0072bc;" ></i>
-    <i class="fa fa-star" style="color: #0072bc"></i>
-    <i class="fa fa-star" style="color:  #0072bc;"></i>
+    <i class="fa fa-star" style="color: #467dc0"></i>
+    <i class="fa fa-star" style="color: #467dc0" ></i>
+    <i class="fa fa-star" style="color: #467dc0"></i>
+    <i class="fa fa-star" style="color: #467dc0;"></i>
     <i class="fa fa-star" style="color: gray";></i> 
     <span>(14 opinions)</span>
     @if($parfum->prix2 != 0)
@@ -82,7 +78,8 @@
           </a></td>
         <td style="text-align: center;padding-top: 20px;"><h4> {{$s->size}} ml</h4></td>
         @if($s->prix2 != 0)
-        <td style="text-align: center;padding-top: 20px;"><h4 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">{{$s->prix2}} DA</h4><h4 style="color: black;text-decoration-line: line-through;text-decoration-color: red;"> {{$s->prix}} DA</h4></td>
+        <td style="text-align: center;padding-top: 20px;"><h4 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">{{$s->prix2}} DA</h4>
+        <h4 style="color: black;text-decoration-line: line-through;text-decoration-color: red;"> {{$s->prix}} DA</h4></td>
        
         @else
         <td style="text-align: center;padding-top: 20px;"><h4 style="color: black;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> {{$s->prix}} DA</h4></td>
@@ -133,12 +130,12 @@
       <input type="hidden" name="price" value="{{$parfum->prix2}}"/>
 
 @else
-<input type="hidden" name="price" value="{{$parfum->prix1}}"/>
+<input type="hidden" name="price" value="{{$parfum->prix}}"/>
 
 @endif
 
      
-            <button id='cart' class="btn icon-btn" type="submit">   
+            <button id='cart' class="btn icon-btn" style="  background-color: #467dc0;" type="submit">   
                 <span class="glyphicon btn-glyphicon glyphicon-shopping-cart img-circle text-warning"></span>Add to cart
             </button>
     

@@ -14,15 +14,19 @@ class ordersController extends Controller
     public function Panier($id) {
 
         $user=User::find($id);
-
-        $orders=orders:: where('customer', '=',$user->email)->get();
+if(Auth::user()->email == $user->email){
+        $orders=orders:: where('customer', '=',$user->email)->paginate(9);
 
         return view('panier',['res' => $orders,]);
 
     }
+    else{
+        return redirect('welcome');
 
+    }
+    }
     public function items() {
-        $items = orders:: where('customer', '=','larbifatima@yahoo.com')->count();
+        $items = orders:: where('customer', '=',Auth::user()->email)->count();
         return  view('layouts.layout',['item' => $items,]);
 
     }
@@ -43,6 +47,22 @@ class ordersController extends Controller
         return redirect()->route('details', ['id'=> request('id')]);
 
     }
+
+     public function addOrder(Request $request) {
+        $order= new orders();
+        $order->customer  = $request->customer; //This Code coming from ajax request
+        $order->price  = $request->price; //This Chief coming from ajax request
+        $order->size  = $request->size; 
+        $order->image  = $request->image;
+        $order->product  = $request->product;
+        $order->quantite  = (1);
+        $order->validate = ('false');
+
+
+        $order->save();
+
+    }
+    
     public function DeleteOrder($id,$customer) {
         $order = orders::findOrFail($id);
         $order->delete();

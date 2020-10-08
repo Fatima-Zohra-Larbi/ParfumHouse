@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,19 +41,28 @@
 <ul  class="login">
   <!-- Authentication Links -->
   @guest
+  
       <li>
-          <a  href="{{ route('login') }}"> <span class="glyphicon glyphicon-user"></span> {{ __('Login') }}</a>
+          <a  href="{{ route('login') }}"> <img src="img/lock.png" width='20' height="20"> {{ __('Login') }}</a>
       </li>
       @if (Route::has('register'))
           <li>
-              <a  href="{{ route('register') }}"> <span class="glyphicon glyphicon-log-in"></span>{{ __('Register') }}</a>
+              <a  href="{{ route('register') }}"><img src="img/register.png" width='20' height="20">{{ __('Register') }}</a>
           </li>
       @endif
+      <li>
+  <a href="/login"><img src="/img/cart.png" width="20" height="20" /></a>
+
+</li>
+<li>
+<a href="/login"><img src="/img/heart.png" width="20" height="20" /></a>
+
+</li>
   @else
       <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
              <img src="/img/user.png" width="25" height="25" /> 
-             
+
             
             
              {{ Auth::user()->name }}
@@ -71,17 +81,18 @@
               </form>
           </div>
       </li>
-      @if($item !=0)
+      @if($item !=0 )
 
       <li>
       <div style=" position: relative;text-align: center;">
         <a  href="{{ action('ordersController@Panier', Auth::user()->id) }}">
            <img src="/img/cart.png" width="20" height="20" /></a>
            <div style=" position: absolute;top: 10%;left: 90%; transform: translate(-0%, -60%);color:white;
-            border-radius: 20px; background-color:rgb(211, 5, 5);width:15px;height:15px;font-size:12px">{{$item}}
+            border-radius: 20px; background-color:#467dc0;width:15px;height:15px;font-size:12px">{{$item}}
             </div>
 </div>
     </li>
+   
     @else
     <li>
       
@@ -91,6 +102,15 @@
 </div>
     </li>
     @endif
+    <li>
+      <div style=" position: relative;text-align: center;">
+        <a  href="{{ action('favoriteController@Fav') }}">
+           <img src="/img/heart.png" width="20" height="20" /></a>
+           <div style=" position: absolute;top: 10%;left: 90%; transform: translate(-0%, -60%);color:white;
+            border-radius: 20px; background-color:#467dc0;width:15px;height:15px;font-size:12px">{{$itemf}}
+            </div>
+</div>
+    </li>
   @endguest
 </ul>
             </div>
@@ -118,7 +138,7 @@
             <li >
               <a href="/menParfum">Men Parfum</a> </li>
             <li><a href="/promotion">Promotions</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="#">Nouveauté</a></li>
           </ul>
           <form class="navbar-form navbar-right" method="post" action="{{ action('parfumController@search') }}">
             {{csrf_field()}}
@@ -145,44 +165,43 @@
                Advanced Search
             </legend>
             
-            <form >
-              
+            <form method="post" action="{{ action('parfumController@advancedSearch') }}">
+            {{csrf_field()}}
                <div >
                <label for="text" class="col-sm-4" >Price:</label>
-               <input class="col-sm-8" type="text" placeholder="put the price you want" required/>
+               <input class="col-sm-8" type="text" placeholder="put the price you want" name="price" required/>
             </div><br><br>
             <div >
                <label class="col-sm-4" >Marque:</label>
-               <input class="col-sm-8" type="text" placeholder="put the Marque you want" required/></div><br><br>
+               <input class="col-sm-8" type="text" placeholder="put the Marque you want" name="marque" required/></div><br><br>
                <div > 
                <label class="col-sm-4">Type:</label>
 
-               <select name="type" class="col-sm-8" >
-                  <option value="volvo">Eau de parfum</option>
-                  <option value="saab">Eau de toilette</option>
-                  <option value="saab">Eau de cologne</option>
-                  <option value="saab">Eau de toilette</option>
+               <select name="type" class="col-sm-8" name="type" >
+                  <option value="eau de parfum">Eau de parfum</option>
+                  <option value="Eau de toilette">Eau de toilette</option>
+                  <option value="Eau de cologne">Eau de cologne</option>
                 </select></div> <br><br>
                 
                 
                 <div >
                 <label class="col-sm-4">Gender:</label><br><br>
                 <label  class="gender col-sm-4 offset-sm-2">Women
-                  <input type="radio" checked="checked" name="gender">
+                  <input type="radio" checked="checked" value ="femme" name="gender">
                   <span class="checkmark"></span>
                 </label>
                 <label class="gender col-sm-8">Men
-                  <input type="radio" name="gender">
+                  <input type="radio" name="gender" value ="homme" >
                   <span class="checkmark"></span>
                 </label>
             </div> 
             <br>
             <div class="contain">
-               <div class="button">
+               <button class="button"  type="submit">
                  <div class="icon">
-                   <i class="fa fa-search"></i>
+                   <i class="fa fa-search" ></i>
                  </div>
-               </div>
+</button>
              </div>
    
                </form>
@@ -210,7 +229,56 @@
 		</div>
 
 </div>
+<script>
+function search() {
+    var marque = $("#marque").val();
+    var type = $("#type").val();
+    var price = $("#price").val();
+    var radios = document.getElementsByName('gender');
+   
+    for (var i = 0;  i < radios.length; i++) {
+  if (radios[i].checked) {
+    // do whatever you want with the checked radio
+var gender=radios[i].value;
+    // only one radio can be logically checked, don't check the rest
+    break;
+  }
+}
+    
+    
+   
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
 
+
+     $.ajax({
+        type: 'post',
+        url: '/advancedSearch',
+        data: {
+            'marque': marque,
+            'type': type,
+            'price': price,
+            'gender': gender,
+            
+
+        },
+        function (data) {
+       window.location = data;
+        }
+       
+        
+    }); 
+
+  
+}
+    
+
+ 
+</script>
+<!-- TRENDING SLIDE SCRIPT -->
 <script>
    var myIndex = 0;
    carousell();
@@ -234,23 +302,20 @@
 
 			<div class="footer-left">
 
-				<h3>Company<span>logo</span></h3>
-
+<img src="img/logo.png" width="100" height="100">
 				<p class="footer-links">
 					<a href="#" class="link-1">Home</a>
 					
 					<a href="#">Blog</a>
 				
-					<a href="#">Pricing</a>
 				
 					<a href="#">About</a>
 					
-					<a href="#">Faq</a>
 					
 					<a href="#">Contact</a>
 				</p>
 
-				<p class="footer-company-name">Company Name © 2015</p>
+				<p class="footer-company-name">Parfume World © 2015</p>
 			</div>
 
 			<div class="footer-center">

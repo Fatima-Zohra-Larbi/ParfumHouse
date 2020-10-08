@@ -144,10 +144,9 @@ fieldset {
   color: #888;
 }
 </style>
-@extends('layout.layout')
-@section('content')
+<body>
 <div class="container">  
-  <form id="contact" action="/welcome" method="post">
+  <form id="contact" action="/data" method="post">
     @csrf
     <h3>Add parfum to database</h3>
     <fieldset>
@@ -157,11 +156,13 @@ fieldset {
       <input placeholder="the price of the parfum" type="text" name="price" tabindex="2" required>
     </fieldset>
     <fieldset>
+      <input placeholder="the price promotion of the parfum" type="text" name="price2" tabindex="2" required>
+    </fieldset>
+    <fieldset>
     <select name="type" >
-  <option value="Eau de parfum">Eau de parfum</option>
-  <option value="Eau de toilette">Eau de toilette</option>
-  <option value="Eau de cologne">Eau de cologne</option>
-  <option value="Eau de senteurs">Eau de senteurs</option>
+  <option value="eau de parfum">Eau de parfum</option>
+  <option value="eau de toilette">Eau de toilette</option>
+  <option value="eau de cologne">Eau de cologne</option>
 </select> 
    </fieldset>
 
@@ -187,4 +188,4 @@ fieldset {
     </fieldset>
   </form>
 </div>
-@endsection
+</body>

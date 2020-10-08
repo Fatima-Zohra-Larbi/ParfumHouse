@@ -39,20 +39,19 @@ text-align: center;
 <br>
 <body style=" margin-left: 350px;">
     <div   class="col-sm-8" id="example1" style="background-color: rgb(243, 241, 241);">
-        <h2 style="font-family:serif ; font-weight: bold;margin-top: 0;">Shopping Cart</h2><br>
+        <h2 style="font-family:serif ; font-weight: bold;margin-top: 0;">Favorite Products</h2><br>
     <table style="width:100%" class="table" id="countit">
             <thead>
                 <tr id="custom">
                     <th>Product</th>
                     <th> Name </th>
                     <th> Price </th>
-                    <th> Quantity </th>
-                    <th> Total</th>
-                    <th> Delete </th>
+                    <th> Delete</th>
+                    
                 </tr>
             </thead>
             <tbody>
-            @foreach($res as $s)
+            @foreach($fav as $s)
 
     <tr id="custom">
 <td style="top: 0; transform: translateY(0);
@@ -64,32 +63,16 @@ transform: translateY(10%); font-weight: bold;font-size: 16px;font-family:serif 
 </td>
 <td class="count-me"> {{$s->price}} </td>
 
-<td>{{$s->quantite}}</td>
 <td id="somme"></td>
 
-<td><a href=" {{route('delete',[$s->id, Auth::user()->id])}} "> <span class="glyphicon  glyphicon-remove " style="color: grey;"></span>
+<td><a href=" {{route('deletef',[$s->id])}} "> <span class="glyphicon  glyphicon-remove " style="color: grey;"></span>
 </td></a>     
 
 
 </tr>
-<tr><td colspan="6"></td></tr>
 
 @endforeach
     
-
-        <tr>
-         <td colspan="5" style="text-align: right; font-size: 16px;font-weight: bold;">Total :</td> 
-           <td colspan="1"  id="demo">  
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4"> {{$res->links('pagination')}}
-</td>
-            <td colspan="1" style="text-align: right;"><button style="width: 100px; background-color: darkgray; height: 30px; border: 0;border-radius: 10px;" > Print</button>
-            </td>
-            <td colspan="1" style="text-align: right;"><button style="width: 100px; background-color: #467dc0; height: 30px; border: 0;border-radius: 10px;" > Order</button>
-            </td>
-        </tr>
 </tbody>
 </table>
 <div>
@@ -97,26 +80,5 @@ transform: translateY(10%); font-weight: bold;font-size: 16px;font-family:serif 
 </div>
 </div>
 
-<script language="javascript" type="text/javascript">
-    var tds = document.getElementById('countit').getElementsByTagName('td');
-    var sum = 0;
-    for(var i = 0; i < tds.length; i ++) {
-        if(tds[i].className == 'count-me') {
-            sum += isNaN((tds[i].innerHTML)*(tds[i+1].innerHTML)) ? 0 : parseInt(tds[i].innerHTML*tds[i+1].innerHTML);
-        }
-    }
-    document.getElementById('demo').innerHTML =   sum+' DA' ;
-</script>
-<script language="javascript" type="text/javascript">
-    var tdx = document.getElementById('countit').getElementsByTagName('td');
-    var prix = 0;
-    for(var i = 0; i < tdx.length; i ++) {
-        if(tdx[i].className == 'count-me') {
-            prix += isNaN((tdx[i].innerHTML)*(tdx[i+1].innerHTML)) ? 0 : parseInt(tdx[i].innerHTML*tdx[i+1].innerHTML);
-            document.getElementById('countit').getElementsByTagName('td')[i+2].innerHTML =   prix+' DA' ;
-prix=0;
-        }
 
-    }
-</script>
 </body>
